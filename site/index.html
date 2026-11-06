@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Albion Hoxha | Cybersecurity and Networking</title>
+  <meta name="description" content="Portfolio of Albion Hoxha, Computer and Software Engineering student. Drawn like a packet header, with working network tools and five flags to find.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#about">Skip to content</a>
+
+  <header class="bar">
+    <a class="brand" href="#top" aria-label="Back to top">AH</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#lab">Lab</a>
+      <a href="#projects">Projects</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-needs-js hidden aria-label="Switch colour theme">◐</button>
+  </header>
+
+  <main id="top">
+    <section class="packet" aria-label="Introduction">
+      <div class="ruler" aria-hidden="true"><span>0</span><span>8</span><span>16</span><span>24</span></div>
+      <div class="fields">
+        <div class="field w32 name">
+          <span class="tag">NAME</span>
+          <h1>Albion Hoxha</h1>
+          <span class="hex" aria-hidden="true">41 6C 62 69 6F 6E 20 48 6F 78 68 61</span>
+        </div>
+        <div class="field">
+          <span class="tag">ROLE</span>
+          <p>Computer &amp; Software Engineering Student</p>
+        </div>
+        <div class="field">
+          <span class="tag">ORIGIN</span>
+          <p>University of Prishtina</p>
+        </div>
+        <div class="field">
+          <span class="tag">FOCUS</span>
+          <p>Cybersecurity &amp; Networking</p>
+        </div>
+        <div class="field flags" data-needs-js hidden>
+          <span class="tag">FLAGS</span>
+          <p class="flag-bits" aria-label="0 of 5 flags found">00000</p>
+          <button class="ctf-open" type="button">Play the mini-CTF</button>
+        </div>
+      </div>
+      <ul class="stats" aria-label="About this site">
+        <li><b>5</b> flags</li>
+        <li><b>4</b> live tools</li>
+        <li><b>0</b> cookies</li>
+        <li><b>0</b> trackers</li>
+        <li><b>0</b> dependencies</li>
+      </ul>
+    </section>
+
+    <section class="block" id="about">
+      <span class="offset" aria-hidden="true">0x0040</span>
+      <div>
+        <h2>About</h2>
+        <p>I'm a Computer &amp; Software Engineering student at the University of Prishtina, focused on cybersecurity and networking.</p>
+        <p>This site is drawn like a packet header, and it does more than describe my work. The Lab holds network tools you can use, and five flags are hidden behind the FLAGS field above. The game is simulated and runs in your browser, so it never touches a real system.</p>
+      </div>
+    </section>
+
+    <section class="block" id="skills">
+      <span class="offset" aria-hidden="true">0x0080</span>
+      <div>
+        <h2>Skills</h2>
+        <div class="fields bento">
+          <div class="field wide"><span class="tag">FOCUS</span><h3>Cybersecurity</h3><p>Log analysis, encoding, and hardened headers. <a href="#headers">See the live check</a></p></div>
+          <div class="field wide"><span class="tag">FOCUS</span><h3>Networking</h3><p>Subnetting and IPv4 headers, bit by bit. <a href="#subnet">Try the Subnet Lab</a></p></div>
+          <div class="field"><span class="tag">WEB</span><p>HTTP and security headers</p></div>
+          <div class="field"><span class="tag">WEB</span><p>HTML, CSS, JavaScript</p></div>
+          <div class="field"><span class="tag">CLOUD</span><p>AWS Amplify Hosting</p></div>
+          <div class="field"><span class="tag">TOOLS</span><p>Git and GitHub</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="lab">
+      <span class="offset" aria-hidden="true">0x00C0</span>
+      <div>
+        <h2>Lab</h2>
+        <p>Four working tools. They run in your browser, and nothing you type leaves this page.</p>
+
+        <article class="tool" id="subnet">
+          <h3>Subnet Lab</h3>
+          <p class="needs-js-note">Move the slider and watch the network and host bits split.</p>
+          <form class="lab-form" data-needs-js hidden>
+            <label for="subnet-ip">IPv4 address</label>
+            <input id="subnet-ip" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="15" value="192.0.2.77" aria-describedby="subnet-error">
+            <label for="subnet-prefix">Prefix <output id="subnet-prefix-value" for="subnet-prefix">/26</output></label>
+            <input id="subnet-prefix" type="range" min="0" max="32" value="26">
+          </form>
+          <p class="lab-error" id="subnet-error" role="status"></p>
+          <div class="bitgrid" data-needs-js hidden aria-hidden="true"></div>
+          <dl class="readout" data-needs-js hidden>
+            <div><dt>Network</dt><dd data-key="network"></dd></div>
+            <div><dt>Broadcast</dt><dd data-key="broadcast"></dd></div>
+            <div><dt>First host</dt><dd data-key="firstHost"></dd></div>
+            <div><dt>Last host</dt><dd data-key="lastHost"></dd></div>
+            <div><dt>Mask</dt><dd data-key="mask"></dd></div>
+            <div><dt>Wildcard</dt><dd data-key="wildcard"></dd></div>
+            <div><dt>Usable hosts</dt><dd data-key="hosts"></dd></div>
+          </dl>
+        </article>
+
+        <article class="tool" id="dissector">
+          <h3>IPv4 Packet Dissector</h3>
+          <p class="needs-js-note">Paste an IPv4 header as hex. It draws every field and recalculates the checksum.</p>
+          <form class="lab-form stacked" data-needs-js hidden>
+            <label for="dissect-input">Header hex</label>
+            <textarea id="dissect-input" rows="2" maxlength="400" spellcheck="false" autocomplete="off" aria-describedby="dissect-error"></textarea>
+            <button class="lab-button" id="dissect-sample" type="button">Load a sample</button>
+          </form>
+          <p class="lab-error" id="dissect-error" role="status"></p>
+          <div class="dissect" id="dissect-output"></div>
+        </article>
+
+        <article class="tool" id="headers">
+          <h3>Live Header Report</h3>
+          <p class="needs-js-note">Requests this page and grades the security headers that actually came back. It only checks this site.</p>
+          <button class="lab-button" id="headers-run" type="button" data-needs-js hidden>Run the live check</button>
+          <p class="lab-score" id="headers-score" role="status"></p>
+          <ul class="report" id="headers-report"></ul>
+        </article>
+
+        <article class="tool" id="trace">
+          <h3>Live Route Trace</h3>
+          <p class="needs-js-note">Shows the real path this page took to reach you: which AWS edge location answered, and whether it came from the cache.</p>
+          <button class="lab-button" id="trace-run" type="button" data-needs-js hidden>Trace my route</button>
+          <p class="lab-score" id="trace-status" role="status"></p>
+          <ol class="hops" id="trace-hops"></ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="projects">
+      <span class="offset" aria-hidden="true">0x0100</span>
+      <div>
+        <h2>Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Mini-CTF console</h3>
+            <p>A five-level capture-the-flag game built into this page, with its own command parser and a simulated firewall log. Flags are stored only as SHA-256 hashes.</p>
+            <button class="ctf-open text-button" type="button" data-needs-js hidden>Play it</button>
+          </article>
+          <article class="card">
+            <h3>Subnet Lab</h3>
+            <p>An IPv4 subnet calculator that shows the split bit by bit, including the /31 and /32 edge cases. Covered by automated tests.</p>
+            <a href="#subnet">Open it</a>
+          </article>
+          <article class="card">
+            <h3>IPv4 Packet Dissector</h3>
+            <p>Turns raw hex into a field diagram and verifies the header checksum, so a corrupted packet stands out straight away.</p>
+            <a href="#dissector">Open it</a>
+          </article>
+          <article class="card">
+            <h3>Hardened hosting on AWS</h3>
+            <p>Runs on AWS Amplify Hosting with a strict Content Security Policy, HSTS, and clickjacking protection. No cookies, trackers, or third-party scripts.</p>
+            <a href="#headers">Check it live</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>
+      <a href="https://www.linkedin.com/in/albion-hoxha/" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/Albion-Hoxha" rel="noopener noreferrer">GitHub</a>
+    </p>
+    <p>Hosted on AWS Amplify. Built for the AWS Student Builder Challenge.</p>
+    <p id="page-weight"></p>
+  </footer>
+
+  <dialog class="console" aria-label="Mini-CTF console">
+    <div class="console-head">
+      <span class="console-title">mini-ctf</span>
+      <span class="flag-bits" aria-label="0 of 5 flags found">00000</span>
+      <button class="console-close" type="button" aria-label="Close console">Close</button>
+    </div>
+    <div class="output" role="log" aria-live="polite" tabindex="0"></div>
+    <form class="prompt">
+      <label for="cmd">&gt;</label>
+      <input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" autofocus aria-label="Command">
+    </form>
+    <div class="chips" aria-label="Suggested commands">
+      <button type="button" data-cmd="help">help</button>
+      <button type="button" data-cmd="ls">ls</button>
+      <button type="button" data-cmd="hint">hint</button>
+      <button type="button" data-cmd="progress">progress</button>
+    </div>
+  </dialog>
+</body>
+</html>
